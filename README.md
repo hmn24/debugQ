@@ -11,7 +11,7 @@ __Compilation of cpu.c is__:
 `cc -I. -fPIC -shared -o ~/q/l64/cpu.so cpu.c`
 
 
-# Instructions:
+## Instructions:
 
 Place the following files under QHOME directory:
 1) libso directory
