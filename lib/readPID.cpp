@@ -5,6 +5,7 @@
 #include "k.h"
 extern "C"
 
+// Can't use "using namespace std" for the dll to q/kdb+
 // Read PI IO function
 K readPidFile(K pid, K file)
 {
