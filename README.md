@@ -14,6 +14,6 @@ __Compilation of cpu.c is__:
 ## Instructions:
 
 Place the following files under QHOME directory:
-1) libso directory
-2) d.k
-3) d.q 
+1) `Entire libso directory`
+2) `d.k`
+3) `d.q` 
