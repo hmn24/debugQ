@@ -30,4 +30,26 @@ K readPidFile(K pid, K file)
     return xD(k,v);
 };  
 
+extern "C" 
+
+// Temporary implementation of /proc/pid/stats, which returns a list of strings  
+K readPidStat(K pid, K sI, K eI)
+{
+    J length, i; 
+    std::string line; // Standard definition of variables
+    
+    if((pid->t!=-KI) || (sI->t!=-KJ) || (eI->t!=-KJ)) {return krr((S) "type");}; 
+    if(eI->j >= sI->j) {length = 1 + eI->j - sI->j;} else {return krr((S) "Ending Index must be larger than Starting Index");}; 
+    K v = ktn(0, length);
+
+    std::ifstream reader("/proc/" + std::to_string(pid -> i) + "/stat");
+    if(!reader) {return krr((S) "Error opening file for output");}
+    for (i=1; (!reader.eof()); i++)
+    {
+    getline(reader,line,' ');
+    if(i >= sI->j) {kK(v)[i - sI->j] = kp((S) line.c_str()); if(i == eI->j){break;};}
+    }
+    reader.close();
+    return v;
+};
 
