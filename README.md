@@ -42,3 +42,4 @@ cutime               | 0
 cstime               | 0
 starttime            | 0
 ```
+`Note:` There's a base of 97 rchar which "seems to be present" due to the implicit cost of running the set of codes above
