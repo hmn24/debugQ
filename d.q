@@ -4,8 +4,11 @@
 / To compute differences in cpu cycles
 read_cycles: hsym[`$ getenv[`QHOME], "/libso/cpu"] 2: (`q_read_cycles_of_this_cpu;1);
 
-/ To compute differences in proc/io stats
+/ To compute differences in proc/pid/io
 read_io: hsym[`$ getenv[`QHOME], "/libso/readPID"] 2: (`readPidFile;2);
+
+/ To compute differences in proc/pid/stat
+read_io: hsym[`$ getenv[`QHOME], "/libso/readPID"] 2: (`readPidStat;3);
 
 // Define the function that measures time and memory stats
 mStats: {
