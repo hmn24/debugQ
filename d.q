@@ -20,10 +20,11 @@ cpuStats: {
 // Define the function that measures time and memory stats
 mStats: {
     s_cpu:read_cycles[]; 
-    s_io:read_io[.z.i;`io]; 
     s_cpu_stat: cpuStats[.z.i]; 
-    op:`time`mem!system "ts 0N!", x; 
-    @[op; `cpudiff; :; read_cycles[] - s_cpu], (read_io[.z.i;`io] - s_io), (cpuStats[.z.i] - s_cpu_stat) 
+    s_io: read_io[.z.i;`io]; 
+    op:`time`mem!.Q.ts[value; enlist "0N!", x];
+    end_io: read_io[.z.i;`io] - s_io;
+    @[op; `cpudiff; :; read_cycles[] - s_cpu], end_io, (cpuStats[.z.i] - s_cpu_stat)
  };
 
 // Define the d) debug mini-language function
