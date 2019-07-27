@@ -5,13 +5,13 @@
 read_cycles: hsym[`$ getenv[`QHOME], "/libso/cpu"] 2: (`q_read_cycles_of_this_cpu;1);
 
 // To compute differences in proc/pid/io
-read_io: hsym[`$ getenv[`QHOME], "/libso/readPID"] 2: (`readPidFile;2);
+read_io: hsym[`$ getenv[`QHOME], "/libso/readPid"] 2: (`readPidFile;2);
 
 // To compute differences in proc/pid/stat
 / Note that the read_stat takes in strictly an ascending order list, so ascending is best applied before using it
-read_stat: hsym[`$ getenv[`QHOME], "/libso/readPID"] 2: (`readPidStat;2);
+read_stat: hsym[`$ getenv[`QHOME], "/libso/readPid"] 2: (`readPidStat;2);
 
-// Define function for cpu stats for specific PID
+// Define function for cpu stats for specific pid
 / https://stackoverflow.com/questions/16726779/how-do-i-get-the-total-cpu-usage-of-an-application-from-proc-pid-stat
 cpuStats: {
     `utime`stime`cutime`cstime`starttime!raze "J"$ read_stat[x; 14 15 16 17 22]
