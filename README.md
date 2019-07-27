@@ -22,20 +22,20 @@ Place the following files under QHOME directory:
 ### Typical Outputs:
 
 ```
-q)d)1+10000000
-10000001
-time                 | 0
-mem                  | 1072
-cpudiff              | 1236544
-rchar                | 672
-wchar                | 9
+q)d)1+til 10000000
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29..
+time                 | 65
+mem                  | 268435952
+cpudiff              | 209478571
+rchar                | 658
+wchar                | 80
 syscr                | 4
 syscw                | 1
 read_bytes           | 0
 write_bytes          | 0
 cancelled_write_bytes| 0
-utime                | 0
-stime                | 0
+utime                | 3
+stime                | 2
 cutime               | 0
 cstime               | 0
 starttime            | 0
