@@ -33,7 +33,7 @@ K readPidFile(K pid, K file)
 extern "C" 
 
 // Temporary implementation of /proc/pid/stats, which returns a list of strings
-// This assumes strings come in ascending format which would be handle on the q level
+// This assumes strings come in ascending format which would be handled on the q level
 K readPidStat(K pid, K list)
 {
     J i, ind = 0; 
