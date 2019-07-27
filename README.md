@@ -21,7 +21,7 @@ Place the following files under QHOME directory:
 
 ### Typical Outputs:
 
-`
+```
 q)d)1+10000000
 10000001
 time                 | 0
@@ -39,4 +39,4 @@ stime                | 0
 cutime               | 0
 cstime               | 0
 starttime            | 0
-`
+```
