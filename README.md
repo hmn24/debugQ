@@ -1,7 +1,7 @@
 # debugQ
 Creation of Mini-Language
 
-__Compilation of readPID.cpp is__:
+__Compilation of readPid.cpp is__:
 
 `g++ -shared -fPIC -fexceptions readPid.cpp -o $QHOME/libso/readPid.so`
 
