@@ -3,7 +3,7 @@ Creation of Mini-Language
 
 __Compilation of readPID.cpp is__:
 
-`g++ -shared -fPIC -fexceptions readPID.cpp -o $QHOME/libso/readPID.so`
+`g++ -shared -fPIC -fexceptions readPid.cpp -o $QHOME/libso/readPid.so`
 
 __Compilation of cpu.c is__: 
 (From https://code.kx.com/v2/interfaces/using-c-functions/)
