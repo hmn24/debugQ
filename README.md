@@ -21,7 +21,7 @@ Place the following files under QHOME directory:
 
 ### Typical Outputs:
 
-Only works for linux systems
+Only works for Unix-based systems
 
 ```
 q)d)a:([] a: til 1000000)
