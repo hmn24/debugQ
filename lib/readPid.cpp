@@ -40,10 +40,9 @@ K readPidStat(K pid, K list)
 
     P(pid->t!=-KI || list->t!=KJ, krr((S)"type")); 
     P(0==list->n, krr((S)"Must provide at least one number"));
-    J len = list->n;
+    J len = list->n, eI = kJ(list)[len-1];
     K v = ktn(0,len);
 
-    J eI = kJ(list)[len-1];
     std::ifstream reader("/proc/" + std::to_string(pid->i) + "/stat");
     P(!reader, krr((S)"Error opening file for output"));
     for (i=1; !reader.eof(); i++)
