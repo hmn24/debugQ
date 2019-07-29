@@ -48,9 +48,9 @@ K readPidStat(K pid, K list)
     for (i=1; !reader.eof(); i++)
     {
     getline(reader,line,' ');
-    if(i<=eI) {if(i==kJ(list)[ind]){kK(v)[ind]=kp((S)line.c_str());ind++;};} else {break;}
+    if(i<=eI){if(i==kJ(list)[ind]){kK(v)[ind]=kp((S)line.c_str());ind++;};}else{break;}
     }
-    if(1<=len-ind){DO(len-ind,kK(v)[ind+i]=kp((S)" "));}; // Create null values for empty ind
+    if(1<=len-ind){DO(len-ind, kK(v)[ind+i]=kp((S)" "));}; // Create null values for empty ind
     reader.close();
 
     return v;
