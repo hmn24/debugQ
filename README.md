@@ -1,5 +1,5 @@
-# debugQ
-Creation of Mini-Language
+# statsQ
+Mini Stats Language in Q to track Unix Stats
 
 __Compilation of readPid.cpp is__:
 
