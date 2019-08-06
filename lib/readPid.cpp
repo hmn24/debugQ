@@ -33,24 +33,24 @@ extern "C"
 
 // Temporary implementation of /proc/pid/stats, which returns a list of strings
 // This assumes strings come in ascending format which would be handle on the q level
-K readPidStat(K pid, K list)
+K readPidStat(K pid, K file, K list)
 {
     J i, ind = 0; 
     std::string line; // Standard definition of variables
 
-    P(pid->t!=-KI || list->t!=KJ, krr((S)"type")); 
+    P(file->t!=-KS || pid->t!=-KI || list->t!=KJ, krr((S)"type")); 
     P(0==list->n, krr((S)"Must provide at least one number"));
     J len = list->n, eI = kJ(list)[len-1];
     K v = ktn(0,len);
 
-    std::ifstream reader("/proc/" + std::to_string(pid->i) + "/stat");
+    std::ifstream reader("/proc/" + std::to_string(pid->i) + "/" + std::string(file->s));
     P(!reader, krr((S)"Error opening file for output"));
     for (i=1; !reader.eof(); i++)
     {
     getline(reader,line,' ');
-    if(i<=eI){if(i==kJ(list)[ind]){kK(v)[ind]=kp((S)line.c_str());ind++;};}else{break;}
+    if(i<=eI) {if(i==kJ(list)[ind]){kK(v)[ind]=kp((S)line.c_str());ind++;};} else {break;}
     }
-    if(1<=len-ind){DO(len-ind, kK(v)[ind+i]=kp((S)" "));}; // Create null values for empty ind
+    if(1<=len-ind){DO(len-ind,kK(v)[ind+i]=kp((S)" "));}; // Create null values for empty ind
     reader.close();
 
     return v;
