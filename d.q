@@ -9,12 +9,16 @@ read_io: hsym[`$ getenv[`QHOME], "/libso/readPid"] 2: (`readPidFile;2);
 
 // To compute differences in proc/pid/stat
 / Note that the read_stat takes in strictly an ascending order list, so ascending is best applied before using it
-read_stat: hsym[`$ getenv[`QHOME], "/libso/readPid"] 2: (`readPidStat;2);
+read_stat: hsym[`$ getenv[`QHOME], "/libso/readPid"] 2: (`readPidStat;3);
 
 // Define function for cpu stats for specific pid
 / https://stackoverflow.com/questions/16726779/how-do-i-get-the-total-cpu-usage-of-an-application-from-proc-pid-stat
 cpuStats: {
-    `utime`stime`cutime`cstime`starttime!raze "J"$ read_stat[x; 14 15 16 17 22]
+    `utime`stime`cutime`cstime`starttime!raze "J"$ read_stat[x; `stat; 14 15 16 17 22]
+ };
+
+memStats: {
+    `VmSize`VmRSS`RssFileRssShmem!raze "J"$ read_stat[x; `statm; 1 2 3]
  };
 
 // Define the function that measures time and memory stats
@@ -22,10 +26,12 @@ mStats: {
     s_cpu:read_cycles[]; 
     s_cpu_stat: cpuStats[.z.i]; 
     s_io: read_io[.z.i;`io]; 
+    s_memStats: memStats[.z.i]; 
     op:`time`mem!.Q.ts[value; enlist "0N!", x];
     end_io: read_io[.z.i;`io] - s_io;
-    @[op; `cpudiff; :; read_cycles[] - s_cpu], end_io, (cpuStats[.z.i] - s_cpu_stat)
+    @[op; `cpudiff; :; read_cycles[] - s_cpu], end_io, (cpuStats[.z.i] - s_cpu_stat), (memStats[.z.i] - s_memStats)
  };
 
 // Define the d) debug mini-language function
 e: {mStats x};
+
