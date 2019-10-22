@@ -3,11 +3,12 @@
 #include <string>
 #define KXVER 3
 #include "k.h"
-extern "C" 
+
+
+extern "C" {
 
 // Read PI IO function
-K readPidFile(K pid, K file)
-{
+K readPidFile(K pid, K file){
     K k,v; 
     J i, ival;
     std::string line; 
@@ -27,14 +28,11 @@ K readPidFile(K pid, K file)
     reader.close();
 
     return xD(k,v);
-};  
-
-extern "C" 
+ }  
 
 // Temporary implementation of /proc/pid/stats, which returns a list of strings
 // This assumes strings come in ascending format which would be handle on the q level, and doesn't have 0 in its list
-K readPidStat(K pid, K file, K list)
-{
+K readPidStat(K pid, K file, K list){
     J i, ind = 0; 
     std::string line; // Standard definition of variables
 
@@ -54,7 +52,6 @@ K readPidStat(K pid, K file, K list)
     reader.close();
 
     return v;
-};
+ }
 
-// Not necessary here but to create an exception in C++
-// try {} catch (std::exception &e) {krr((S) e.what());};
+}
