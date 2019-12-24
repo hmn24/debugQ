@@ -27,9 +27,9 @@ mStats: {
     s_cpu_stat: cpuStats[.z.i]; 
     s_io: read_io[.z.i;`io]; 
     s_memStats: memStats[.z.i]; 
-    op:`time`mem!.Q.ts[value; enlist "0N!", x];
+    op: .Q.ts[value; enlist x];
     end_io: read_io[.z.i;`io] - s_io;
-    @[op; `cpudiff; :; read_cycles[] - s_cpu], end_io, (cpuStats[.z.i] - s_cpu_stat), (memStats[.z.i] - s_memStats)
+    (enlist[`output]!enlist last op), @[`time`mem!first op; `cpudiff; :; read_cycles[] - s_cpu], end_io, (cpuStats[.z.i] - s_cpu_stat), (memStats[.z.i] - s_memStats)
  };
 
 // Define the d) debug mini-language function
